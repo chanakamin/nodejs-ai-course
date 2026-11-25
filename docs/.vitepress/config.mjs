@@ -1,17 +1,23 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'פיתוח צד שרת ב-Node.js (מונחה AI)',
-  description: 'ארכיטקטורה, בסיסי נתונים ומערכות מתקדמות',
+  title: 'פיתוח צד שרת ב-Node.js',
+  description: 'ארכיטקטורה, בסיסי נתונים ופיתוח מונחה AI',
   lang: 'he-IL',
   dir: 'rtl',
-  base: '/nodejs-ai-course/', // חובה! שם הריפו שלך בגיטהאב עם סלאש בהתחלה ובסוף
-
+  base: '/nodejs-ai-course/',
 
   themeConfig: {
     search: { provider: 'local' },
-    outlineTitle: 'בשיעור זה',
-    docFooter: { prev: 'הקודם', next: 'הבא' },
+    outlineTitle: 'בעמוד זה',
+    docFooter: {
+      prev: 'השיעור הקודם',
+      next: 'השיעור הבא'
+    },
+    nav: [
+      { text: 'דף הבית', link: '/' },
+      { text: 'יחידה 1: תשתית מקצועית', link: '/module-01-foundation/01-kickoff-and-ai' }
+    ],
     sidebar: [
       {
         text: 'יחידה 1: תשתית פרויקט מקצועית',

@@ -1,0 +1,14 @@
+/* Ensure code blocks and inline technical snippets remain strictly LTR inside RTL Hebrew pages */
+div[class*='language-'],
+.vp-code-group,
+pre,
+code {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate;
+}
+
+.vp-doc :not(pre) > code {
+  direction: ltr !important;
+  unicode-bidi: embed;
+}
