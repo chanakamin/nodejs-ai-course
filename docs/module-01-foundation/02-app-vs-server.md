@@ -3,11 +3,12 @@
 ## נושאי תת-היחידה
 * למה מפרידים בין `app.js` לבין `server.js`?
 * מעבר משם התיקייה `data` לתיקיית `repositories` כהכנה לעבודה עם מספר מסדי נתונים
+* הכרת מבנה התיקיות המלא של הפרויקט
 
 ---
 
 ## הפרדת `app.js` מ-`server.js`
-ביחידות הקודמות, קובץ `app.js` עשה שני דברים:
+בחלק הראשון של הקורס, קובץ `app.js` עשה שני דברים:
 1. הגדיר את אפליקציית ה-Express (חיבור `express.json()`, חיבור ה-`routes`, הגדרת `middlewares`).
 2. הפעיל את השרת בפועל להאזנה לפורט באמצעות `app.listen(PORT)`.
 
@@ -26,17 +27,20 @@ Explain the benefit in simple terms for a junior developer, especially regarding
 ---
 
 ## משכבת `data` לשכבת `repositories`
-בקורס זה נלמד עיקרון ארכיטקטוני חשוב מאוד: צד השרת אינו "נשוי" לסוג אחד של מסד נתונים! בהמשך נחבר את הפרויקט גם ל-SQL וגם ל-MongoDB, ונראה איך שאר הפרויקט ממשיך לעבוד בלי שינוי.
+בקורס זה נלמד עיקרון ארכיטקטוני חשוב מאוד: צד השרת אינו מחויב לסוג אחד של מסד נתונים! בהמשך נחבר את הפרויקט גם ל-SQL וגם ל-MongoDB, ונראה איך שאר הפרויקט ממשיך לעבוד בלי שינוי.
 
 לשם כך, אנו משנים את שמה של תיקיית `data` לשם המקובל בתעשייה: **`repositories`** (שכבת הגישה לנתונים).
 * שכבת ה-`services` תפנה אך ורק לפונקציות קבועות וברורות שמוגדרות ב-`repository` (לדוגמא: `findAll()`, `findById(id)`, `create(data)`, `update(id, data)`, `remove(id)`).
 * כל הפונקציות ב-`repository` יוגדרו כבר מעכשיו כפונקציות `async` (גם כשהן עובדות מול מערך בזיכרון!), כדי שביחידה הבאה נחליף את המערך במסד נתונים אמיתי בלי לשנות שורת קוד אחת ב-`services` או ב-`controllers`!
 
 ### מבנה התיקיות החדש של הפרויקט
+שימי לב להוספת תיקיות ייעודיות לולידציה (`schemas`) ולתיעוד (`docs`), אותן נלמד בתתי-היחידות הבאות:
+
 ```text
-smart-helpdesk/
+smart-helpdesk-api/
 ├── CLAUDE.md
 ├── .env
+├── .env.example
 ├── .gitignore
 ├── package.json
 └── src/
@@ -54,8 +58,14 @@ smart-helpdesk/
     ├── repositories/
     │   ├── tickets.repository.js
     │   └── categories.repository.js
+    ├── schemas/
+    │   ├── tickets.schema.js
+    │   └── categories.schema.js
     ├── middlewares/
+    │   ├── validate.js
     │   └── errorHandler.js
+    ├── docs/
+    │   └── openapi.json
     └── utils/
         └── AppError.js
 ```
