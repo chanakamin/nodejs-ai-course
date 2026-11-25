@@ -1,12 +1,11 @@
 import { defineConfig } from 'vitepress'
 
-
 export default defineConfig({
   title: 'פיתוח צד שרת ב-Node.js (מונחה AI)',
   description: 'ארכיטקטורה, בסיסי נתונים ומערכות מתקדמות',
   lang: 'he-IL',
   dir: 'rtl',
-  base: '/nodejs-ai-course/', 
+  base: '/nodejs-ai-course/', // חובה! שם הריפו שלך בגיטהאב עם סלאש בהתחלה ובסוף
 
 
   themeConfig: {
